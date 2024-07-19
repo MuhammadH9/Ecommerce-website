@@ -11,7 +11,7 @@
         <h1>Product Details</h1>
     </header>
     <main id="product-details" class="container">
-        <!-- Product details will be dynamically inserted here -->
+        
     </main>
 
     <script src="app.js"></script>
@@ -19,7 +19,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const productId = new URLSearchParams(window.location.search).get('id');
 
-            fetch(`https://jsonplaceholder.typicode.com/photos/${productId}`)
+            fetch(`https://fakestoreapi.com/products/${productId}`)
                 .then(response => response.json())
                 .then(product => {
                     const productDetails = document.getElementById('product-details');
@@ -27,12 +27,12 @@
                     productCard.classList.add('product');
 
                     productCard.innerHTML = `
-                        <img src="${product.url}" alt="${product.title}">
-                        <div class="product-details">
-                            <h3 class="product-title">${product.title}</h3>
-                            <p class="product-price">$${(Math.random() * 100).toFixed(2)}</p>
-                            <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus faucibus.</p>
-                        </div>
+                         <img src="${product.image}" alt="${product.title}" >
+            <h2>${product.title}</h2>
+            <p>${product.description}</p>
+            <p>Price: $${product.price}</p>
+            <p>Category: ${product.category}</p>
+            <p>Rating: ${product.rating.rate} (${product.rating.count} reviews)</p>
                     `;
 
                     productDetails.appendChild(productCard);

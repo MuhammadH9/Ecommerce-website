@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const productList = document.getElementById('product-list');
 
-    fetch('https://jsonplaceholder.typicode.com/photos?_limit=10')
+    fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
         .then(data => {
             data.forEach(product => {
